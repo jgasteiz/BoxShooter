@@ -9,19 +9,19 @@ In this assignment, you will complete the Box Shooter Unity3D project, which wil
 
 ### Instructions
 
-- [ ] Follow along with the videos that accompany this module to build the foundation of your game.
-- [ ] Create an interesting second level of the game. There should be some modifications over the first level. The modifications can be visual, auditory, or gameplay changes. For example, you could include a new target type that behaves in a different way or more visual feedback in the interface based on the type of target that you hit.
-- [ ] Make it so you can move from the level 1 scene to the level 2 scene after reaching an achievable score, such as 50 points. Don’t make it too hard to move from Level1 to Level2 for the peer reviewers. NOTE: You can make a “Next Level” button similar to the “Play Again” button. You will need to make a new NextLevel script, similar to the “PlayAgain” script.
-- [ ] Create a WebGL build of the project with the resulting files within a folder called “WebGL” located within a "Builds" folder at the top-level of your project folder.
-- [ ] Create a compressed (zip archive) of your project folder.
-- [ ] Upload the resulting zip archive for peer review.
+- [x] Follow along with the videos that accompany this module to build the foundation of your game.
+- [x] Create an interesting second level of the game. There should be some modifications over the first level. The modifications can be visual, auditory, or gameplay changes. For example, you could include a new target type that behaves in a different way or more visual feedback in the interface based on the type of target that you hit.
+- [x] Make it so you can move from the level 1 scene to the level 2 scene after reaching an achievable score, such as 50 points. Don’t make it too hard to move from Level1 to Level2 for the peer reviewers. NOTE: You can make a “Next Level” button similar to the “Play Again” button. You will need to make a new NextLevel script, similar to the “PlayAgain” script.
+- [x] Create a WebGL build of the project with the resulting files within a folder called “WebGL” located within a "Builds" folder at the top-level of your project folder.
+- [x] Create a compressed (zip archive) of your project folder.
+- [x] Upload the resulting zip archive for peer review.
 
 Optional items:
 
 - [ ] Modify the design of Level1.
 - [ ] Replace the sound effects to update the sound design of the game.
-- [ ] Replace the textures and/or models to update the visual aesthetics of the game.
-- [ ] Do any other modifications to make your game interesting and fun to play.
+- [x] Replace the textures and/or models to update the visual aesthetics of the game.
+- [x] Do any other modifications to make your game interesting and fun to play.
 
 NOTE: Google Chrome no longer supports plug-ins, so you will need to use another browser such as Firefox, Safari, or Internet Explorer with the Unity3D Web Player installed. The Web Player is installed by default when you install Unity.
 

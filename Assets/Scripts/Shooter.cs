@@ -5,15 +5,18 @@ public class Shooter : MonoBehaviour {
 
 	// Reference to projectile prefab to shoot
 	public GameObject projectile;
-	public float power = 10.0f;
-	
-	// Reference to AudioClip to play
-	public AudioClip shootSFX;
-	
-	// Update is called once per frame
-	void Update () {
-		// Detect if fire button is pressed
-		if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump"))
+	public float power = 100.0f;
+
+    // Reference to AudioClip to play
+    public AudioClip shootSFX;
+
+    private readonly float MIN_POWER = 10.0f;
+
+    // Update is called once per frame
+    void Update () {
+
+        // Detect if fire button is pressed
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Jump"))
 		{	
 			// if projectile is specified
 			if (projectile)
@@ -26,8 +29,20 @@ public class Shooter : MonoBehaviour {
 				{
 					newProjectile.AddComponent<Rigidbody>();
 				}
-				// Apply force to the newProjectile's Rigidbody component if it has one
-				newProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * power, ForceMode.VelocityChange);
+
+                // Calculate the power to apply to the transform forward by adding the game manager
+                // power modifier to the script power.
+                float power_ = power;
+                if (GameManager.gm)
+                {
+                    float newPower = power + GameManager.gm.powerModifier;
+                    // To prevent from the power to use being too little, ensure it can't be
+                    // lower than minPower.
+                    power_ = Mathf.Max(newPower, MIN_POWER);
+                }
+
+                // Apply force to the newProjectile's Rigidbody component if it has one
+                newProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * power_, ForceMode.VelocityChange);
 				
 				// play sound effect if set
 				if (shootSFX)

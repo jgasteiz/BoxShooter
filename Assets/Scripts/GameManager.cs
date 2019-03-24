@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour {
 	public int beatLevelScore = 0;
 
 	public float startTime = 5.0f;
-	
-	public Text mainScoreDisplay;
+
+    public Text mainScoreDisplay;
 	public Text mainTimerDisplay;
 
 	public GameObject gameOverScoreOutline;
@@ -25,16 +25,24 @@ public class GameManager : MonoBehaviour {
 
 	public bool gameIsOver = false;
 
-	public GameObject playAgainButtons;
+    // Hacky flag determine whether the next level button should 
+    // be available on Game Over.
+    public bool offerNextLevelOnGameOver = false;
+
+    public GameObject playAgainButtons;
 	public string playAgainLevelToLoad;
 
 	public GameObject nextLevelButtons;
 	public string nextLevelToLoad;
 
-	private float currentTime;
+    // Modifier that will be used by the Shooter script to
+    // make bullets faster or slower.
+    public float powerModifier = 0.0f;
 
-	// setup the game
-	void Start () {
+    private float currentTime;
+
+    // setup the game
+    void Start () {
 
 		// set the current time to the startTime specified
 		currentTime = startTime;
@@ -88,8 +96,12 @@ public class GameManager : MonoBehaviour {
 		if (playAgainButtons)
 			playAgainButtons.SetActive (true);
 
-		// reduce the pitch of the background music, if it is set 
-		if (musicAudioSource)
+        // If we're allowing the player to go to the next level on game over, display them.
+        if (offerNextLevelOnGameOver && nextLevelButtons)
+            nextLevelButtons.SetActive(true);
+
+        // reduce the pitch of the background music, if it is set 
+        if (musicAudioSource)
 			musicAudioSource.pitch = 0.5f; // slow down the music
 	}
 	
@@ -114,7 +126,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// public function that can be called to update the score or time
-	public void targetHit (int scoreAmount, float timeAmount)
+	public void targetHit (int scoreAmount, float timeAmount, float powerModifier)
 	{
 		// increase the score by the scoreAmount and update the text UI
 		score += scoreAmount;
@@ -129,7 +141,10 @@ public class GameManager : MonoBehaviour {
 
 		// update the text UI
 		mainTimerDisplay.text = currentTime.ToString ("0.00");
-	}
+
+        // Modify the power modifier.
+        gm.powerModifier += powerModifier;
+    }
 
 	// public function that can be called to restart the game
 	public void RestartGame ()
